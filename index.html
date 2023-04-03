@@ -12,8 +12,14 @@
     <div id="app">
       <div class="nav-bar"></div>
 
-      <div class="cart">Cart({{ cart }})</div>
-      <product-display :premium="premium"></product-display>
+      <!-- IL valore di cart dipende da eventi che succedono nel componente. Per risolvere il problema uso un event emitter -->
+      <div class="cart">Cart({{ cart.length }})</div>
+      <!-- AGGIUNGO UN EVENT LISTENER, che triggera un metodo che aggiorna il carrello
+            quando riceve l'evento dal componente figlio -->
+      <product-display
+        :premium="premium"
+        @add-to-cart="updateCart"
+      ></product-display>
     </div>
 
     <!-- Import App -->
@@ -24,7 +30,7 @@
 
     <!-- Mount App -->
     <script>
-      const mountedApp = app.mount('#app')
+      const mountedApp = app.mount("#app");
     </script>
   </body>
 </html>
