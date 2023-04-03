@@ -48,7 +48,6 @@ app.component("product-display", {
         </div>
       </div>
 
-      <script src="./components/ProductDetails.js"></script>
     </div>`,
   // qua sotto inserisco tutti i data, method e computed properties di main.js.
   // Lì lascio solo le informazioni globali che afferiscono a tutti i componenti
