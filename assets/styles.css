@@ -40,7 +40,6 @@ body {
   border-radius: 50%;
 }
 
-
 .disabledButton {
   background-color: #d8d8d8;
   cursor: not-allowed;
@@ -155,6 +154,11 @@ textarea {
   padding: 10px;
   font-size: 20px;
   margin-bottom: 20px;
+}
+
+.out-of-stock-img {
+  opacity: 6;
+  border: solid 5px black;
 }
 
 ul {

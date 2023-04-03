@@ -17,7 +17,7 @@
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <img v-bind:src="image" />
+            <img v-bind:src="image" :class="{ 'out-of-stock-img' : !inStock}" />
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
@@ -26,11 +26,33 @@
             <ul>
               <li v-for="detail in details">{{ detail }}</li>
             </ul>
-            <div v-for="variant in variants" :key="variant.id">
-              {{ variant.color }}
+            <div
+              v-for="variant in variants"
+              :key="variant.id"
+              @mouseover="updateImage(variant.image)"
+              class="color-circle"
+              :style="{ backgroundColor : variant.color }"
+            >
+              <!--  -->
+              <!-- {{ variant.color }} -->
             </div>
-            <button class="button" v-on:click="addToCart()">Add to Cart</button>
-            <!-- La shorthand è v-on -->
+            <button
+              class="button"
+              v-on:click="addToCart()"
+              :class="{ disabledButton: !inStock}"
+              v-bind:disabled="!inStock"
+            >
+              <!-- Posso usare anche dei ternari per fare un bind condizionale
+            :class = "[ inStock? disabledButton : '']"
+                Aka associo una classe all'elemento se la condizione si verifica, altrimenti ne assegno un'altra
+
+            -->
+              Add to Cart
+            </button>
+            <!-- La shorthand di v-on: è @ -->
+            <button class="button" @click="removeFromCart()">
+              Remove Item
+            </button>
           </div>
         </div>
       </div>
